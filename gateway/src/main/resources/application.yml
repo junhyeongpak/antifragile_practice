@@ -1,0 +1,17 @@
+server:
+  port: 5555
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    routes:
+      - id: membership-server
+        uri: lb://MEMBERSHIP-SERVER
+        predicates:
+          - Path=/users/**
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
